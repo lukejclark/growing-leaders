@@ -1,0 +1,88 @@
+%div(ng-controller='SchoolsListCtrl')
+  = partial 'layouts/header', locals: {nav: 'index', title: 'Invest In Habitudes for the Next<br /> Generation of Georgia Leaders', counter: 'global'}
+
+  .home-page
+    .row
+      .small-12.columns
+        .video-wrapper.hide-for-small-only(ng-class='{show: true, maximized: is_maximized}' enhanced-player)
+          .loading(ng-hide='is_ready') Loading...
+          .player-controls(ng-click='playVideo($event)' ng-show='is_ready')
+            .play-circle
+              .play-arrow
+          %ff-vimeo-player(ff-video-id='108280776')
+        %ff-vimeo-player.show-for-small-only(ff-video-id='108280776')
+
+    .row.below-video-content
+      .small-12.medium-8.columns.whois-growing-leader
+        %em Growing Leaders for Georgia
+        is a movement to bring
+        %strong Habitudes
+        (a visual, character-based, student-leadership development curriculum) to Georgia high schools that cannot afford to purchase the program for their students.
+        %a(href='')
+          %strong Learn more about Habitudes.
+      .small-12.medium-4.columns.social-share
+        %a.module-share-button-simple(href='javascript: fbShare()')
+          %i.fa.fa-facebook-square.fa-2x
+          %span Share
+        %a.module-share-button-simple.twitter-popup(href=general_tweet_url)
+          %i.fa.fa-twitter.fa-2x
+          %span Tweet
+      .clearfix
+
+    .row
+      .small-12.column
+        .school-header
+          .title Schools Needing Your Help
+          %a.view-all-schools(href='/schools') View All Schools &raquo;
+
+    .row
+      %school-card.small-12.medium-4.column(ng-repeat='school in schools | limitTo:6' school='school')
+
+    .row.section-quotes
+      .small-12.columns
+        .quotes-header
+          .line1 Habitudes Has Influenced Over 700,000 Students
+          .line2 In Over 20 Counties Around the World
+        %ul.quotes.first-line
+          %li
+            .left-quote &ldquo;
+            .photo
+              %img(src='/assets/img/quotes/growingleaders_0012_Clay.jpg')
+            .quote
+              "Habitudes has been a catalyst<br/>
+              for me in my journey as a leader and a student officer."
+            .author - Clay, University of South Carolina
+          %li
+            .right-quote &rdquo;
+            .photo
+              %img(src='/assets/img/quotes/growingleaders_0006_BethOlney.jpg')
+            .quote
+              "Habitudes understands what students need and<br/>
+              how to deliver it in a relevant fashion."
+            .author - Mary Gerardy, Dean, Wake Forest University
+
+        %ul.quotes.second-line
+          %li
+            .photo
+              %img(src='/assets/img/quotes/growingleaders_0011_Becky.jpg')
+            .quote
+              "Habitudes was the best leadership book I ever read.<br/>
+              It's simple, memorable, and it prepared me for life."
+            .author - Becky, Kansas State University
+          %li
+            .photo
+              %img(src='/assets/img/quotes/growingleaders_0009_JoKirchner.jpg')
+            .quote
+              "I highly recommend Habitudes to parents, teachers,<br>
+              coaches and youth workers everywhere."
+            .author - Jo Kirchner, CEO of Primrose Schools
+          %li
+            .photo
+              %img(src='/assets/img/quotes/growingleaders_0010_Brent.jpg')
+            .quote
+              "The best thing about Habitudes is each image<br/>
+              is practical to my life. I use them every day."
+            .author - Brent, Virginia Tech
+
+
+    = partial 'layouts/social_more'

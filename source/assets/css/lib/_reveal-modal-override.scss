@@ -1,0 +1,19 @@
+.reveal-modal-bg { background: rgba(0,0,0,0.15); }
+
+dialog, .reveal-modal { font-size: 0.8rem; border: 1px solid #999999; @include box-shadow(0 0 3px rgba(0, 0, 0, 0.2)); top: 46px; width: 450px !important; max-width: 100%; margin-left: -225px !important; left: 50% !important; padding: 1.5rem 1rem 0.5rem; @include border-radius(3px);
+  &:focus { outline: 0; }
+  &.welcome { top: 100px; padding: 1.5rem 1.5rem 1rem;
+    .start { border-top: 1px solid #cccccc; text-align: center; margin: 30px 0 10px;
+      .text { color: #aaaaaa; font-weight: bold; display: inline-block; background: white; padding: 5px; position: relative; top: -12px; }
+    }
+    .buttons { text-align: center; padding-bottom: 15px;
+      .button { min-width: 100px; font-size: 0.85rem; @include box-shadow(inset 1px 1px 0 white); background: #eeeeee; margin: 0 10px; color: #008cba; border: 1px solid #cccccc; padding: 7px 15px; }
+    }
+  }
+  p { font-size: 0.85rem; margin-bottom: 7px; color: #777777; }
+  p.intro { margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #eeeeee }
+
+  form { margin-bottom: 0; }
+  input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea { height: 2.1em; padding: 0.1rem 0.5rem; }
+  label { color: #999999; margin-bottom: 3px; }
+}

@@ -1,0 +1,86 @@
+= partial 'layouts/header', locals: {nav: 'my-impact', counter: 'none'}
+
+.page-my-impact(style='min-height:400px;')
+  .row
+    .column.small-12
+      %h2
+        You’ve Impacted 0 Students
+        .vertical-line.hide-for-small-only
+          .border-dashes
+  .row.student-photos
+    .column.small-12
+      .wrapper
+        .horizontal-line.hide-for-small-only
+          .border-dashes
+        .blank-slate
+          .intro
+            .text Make an impact by donating or influencing someone else to donate...
+          .buttons(ng-show='true')
+            %button.module-share-button(ng-click='openDonate($event)' ng-disabled='disable_donate_link')
+              %i.fa.fa-credit-card
+              %span.name Donate
+            %span.separator(style='padding-right: 10px;')>< ,
+            %a.module-share-button.twitter-popup(href=general_tweet_url)
+              %i.fa.fa-twitter.fa-lg
+              %span.name Tweet
+            %span.separator(style='padding: 0 10px;')<> or
+            %button.module-share-button.facebook-popup(href='javascript: fbShare()')
+              %i.fa.fa-facebook-square.fa-lg
+              %span.name Share
+        %ul.photos.hide-for-small-only
+          %li.photo(ng-repeat='k in (0|number:100 -2 ) track by $index')
+        .vertical-line.hide-for-small-only
+          .border-dashes
+        .horizontal-line.hide-for-small-only
+          .border-dashes
+
+  .row.donations-raised
+    .column.small-12
+      .wrapper
+        .horizontal-line.hide-for-small-only
+          .border-dashes
+        .vertical-line.first.hide-for-small-only
+          .border-dashes
+        .donation-count.hide-for-small-only(ng-class='{faded: true}')
+          .count $0
+          .text.text1 And You've Raised
+          .text.text2 In Total Donations
+        .mobile-donation-count.row.show-for-small-only(ng-class='{faded: true}')
+          .text.text1.small-12 And You've Raised
+          .count.small-12 $0
+          .text.text2.small-12 In Total Donations
+        .donation-breakdown(ng-class='{faded: true}')
+          .breakdown-wrapper
+            %ul.boxes
+              %li.box
+                .count $0
+                .text You Donated
+              %li.space +
+              %li.box
+                .count $0
+                .text You Influenced
+              %li.space =
+              %li.box
+                .count $0
+                .text Total You've Raised
+        .vertical-line.last.hide-for-small-only
+          .border-dashes
+
+  .row.schools-funded
+    .column.small-12
+      .wrapper
+        .vertical-line
+          .border-dashes
+        .header-text(ng-class='{faded: true}') YOUR DONATIONS HAVE HELPED FUND...
+        .school-count(ng-class='{faded: true}')
+          .count 0
+          .text.text1 Schools
+          .text.text2 Across Georgia
+        %ul.schools
+          %li.school.empty(ng-repeat='k in (0|number:8 -2 ) track by $index')
+            .horizontal-line.hide-for-small-only
+              .border-dashes
+            .box
+              %a.donate(href='/donate') Donate to a School
+
+    = partial 'layouts/social_more'

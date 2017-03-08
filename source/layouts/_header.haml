@@ -1,0 +1,65 @@
+- nav ||= ''
+- title ||= ''
+- counter ||= nil
+.header
+  .row
+    .small-12.columns(class="#{counter=='none' ? 'medium-12' : 'medium-7'}")
+      .logo-section
+        .main-logo
+          %a(href='/')
+            %img(src='/assets/img/growing-leaders-logo.png')
+        .main-nav
+          .name
+            %a(href='/')
+              %img(src='/assets/img/growing-leaders-name.png')
+          %ul.nav.inline-list
+            %li(class="#{nav=='index' ? 'active' : ''}")
+              %a(href='/')
+                Home
+            %li(class="#{nav=='schools' ? 'active' : ''}")
+              %a(href='/schools')
+                Schools
+            %li(class="#{nav=='my-impact' ? 'active' : ''}")
+              %a(href='/my-impact')
+                My Impact
+        .clearfix
+    - if !counter or counter == 'global'
+      .small-12.medium-5.columns
+        .funding-numbers(class="#{counter}")
+          .font-large
+            <strong>{{stats.school_count_funded}}</strong> / {{stats.school_count}}
+          .font-smaller
+            schools funded for 2014
+          .progress
+            %span.meter(style='width:{{stats.funding_percentage}}%;')
+          .progress-stats
+            .left
+              {{stats.funding_percentage}}% funded
+            .right
+              <strong>${{stats.funding_raised}}</strong> out of <strong>${{stats.funding_goal}} goal</strong>
+    - elsif counter == 'school'
+      .small-12.medium-5.columns
+        .funding-numbers
+          .row
+            .small-6.columns.border-right
+              .font-large
+                %strong ${{stats.funding_raised}}
+              .font-smaller
+                raised of ${{stats.funding_goal}}
+            .small-6.columns
+              .font-large
+                %strong {{stats.total_backers}}
+              .font-smaller
+                %span(count='stats.total_backers' when='{one: "total backer", other: "total backers"}' ng-pluralize)
+          .progress
+            %span.meter(ng-style='{width: (stats.funding_percentage=="--" ? 1 : stats.funding_percentage) + "px"}')
+          .progress-stats
+            .left
+              {{stats.funding_percentage}}% funded
+            .right
+              <strong>${{stats.funding_raised}}</strong> out of <strong>${{stats.funding_goal}} goal</strong>
+
+  - if title
+    .row
+      .small-12.columns
+        %h2.subheader.title.title-pages= title

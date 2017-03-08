@@ -1,0 +1,28 @@
+!!!
+%html(ng-app=ng_app)
+  %head
+    %meta(content="width=device-width, initial-scale=1.0" name="viewport")
+    %title Growing Leaders for Georgia
+    %meta(charset='UTF-8')
+    = stylesheet_link_tag 'all'
+    = stylesheet_link_tag '//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'
+
+    = javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.js'
+    :javascript
+      window.jQuery || document.write("<script src='#{asset_path(:js, 'vendor/jquery-1.10.2.min.js')}'><\/script>")
+    = javascript_include_tag '//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js'
+    = javascript_include_tag '//platform.twitter.com/widgets.js'
+    :coffeescript
+      window.angular || document.write("<script src='#{asset_path(:js, 'vendor/angular-1.2.16.js')}'><\/script>")
+    :javascript
+      (function(w,d,o,b, t,e,m,l){t='script';e=d.createElement(t);m=d.getElementsByTagName(t)[0];e.async=1;w['FanforceObject']=o;w[o]=w[o]||function(){if (typeof arguments[0]==='string'&&!l){w[o].q=w[o].q||[];e.src='//'+b+'/'+arguments[0]+'-fanforce.js#{ENV['RACK_ENV']=='development' ? '?DYNAMIC=1&DEBUG=1' : ''}';m.parentNode.insertBefore(e,m);l=true;}else if(typeof FF.run=='function'){FF.run(arguments)}else{w[o].q.push(arguments)}}})(window,document,'FF','#{ENV['RACK_ENV'] == 'development' ? 'i.fanforce.gg' : 'i.fanforce-staging.com'}');
+      FF('growing-leaders');
+    :javascript
+      DATA_DOMAIN = "#{ENV['RACK_ENV'] == 'staging' ? 'stg-growing-leaders-data.herokuapp.com' : 'data.growingleadersforgeorgia.gg'}"
+    = javascript_include_tag  'all'
+
+  %body(class=page_classes)
+    #fb-root
+    = partial 'layouts/headroom'
+    = yield
+    = partial 'layouts/footer'

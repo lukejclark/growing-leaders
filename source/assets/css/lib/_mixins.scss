@@ -1,0 +1,41 @@
+@mixin scrollable-footer($footer-height, $root-selector: unquote("#root"), $root-footer-selector: unquote("#root-footer"), $footer-selector: unquote("#footer")) {
+    html, body { height: 100%; }
+  #{$root-selector} { clear: both; min-height: 100%; height: auto !important; height: 100%; }
+  #{$footer-selector} { clear: both; position: relative; height: $footer-height; }
+}
+
+@mixin ff-gradient($color-start: none, $color-end: none, $start: top, $image: false) {
+  // Firefox's gradient api is nice.
+  // Webkit's gradient api sucks -- hence these backflips:
+  @if $color-start == none {
+      background:none;
+      filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+      //-ms-filter: "progid:DXImageTransform.Microsoft.gradient(enabled=false)";
+  } @else {
+      $background: unquote("");
+      @if $image {
+        $background: $image + unquote(", ");
+      }
+      $start: unquote($start);
+      $end: opposite-position($start);
+
+      background: mix($color-start,$color-end); // for non-cs3 browsers
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$color-start}', endColorstr='#{$color-end}'); //IE 5.5 - 7
+      //-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=00$color-start, endColorstr=00$color-end)"; // IE 8
+      background: #{$background}-webkit-gradient(linear, grad-point($start), grad-point($end), from($color-start), to($color-end)); // webkit
+      background: #{$background}-moz-linear-gradient($start, $color-start, $color-end); //mozilla
+      //background: #{$background}linear-gradient($start, $color-start, $color-end);
+  }
+}
+
+@mixin user-select($option:auto) {
+   -moz-user-select:$option; -khtml-user-select:$option; -webkit-user-select:$option; -o-user-select:$option; user-select:$option;
+}
+
+@mixin reset-ol { list-style-type: none; list-style-position:outside; text-indent:0; padding-left:0; margin-left:0; line-height:inherit;
+    & > li { margin:0; }
+}
+
+@mixin reset-ul { list-style-type: none; list-style-position:outside; text-indent:0; padding-left:0; margin-left:0; line-height:inherit;
+    & > li { margin:0; }
+}

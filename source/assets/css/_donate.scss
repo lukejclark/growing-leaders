@@ -1,0 +1,28 @@
+.page-donate { padding-top: 50px; padding-bottom: 100px; min-height: 500px;
+  .text-header { font-size:20px; color:#9B9B9B; line-height:36px; text-align:center; margin-bottom: 20px;
+    input.donation-amount { color:#1B7B02; border: none; border-bottom: 1px dotted; padding: 0 15px; @include box-shadow(none); display: inline-block; margin:0; background: transparent; height:auto; width:100px; font-size:20px; text-align: center; }
+    .donate-to {
+      a {font-weight:bold; }
+    }
+  }
+  .rewards-header-wrapper { @include ff-gradient(#f9f9f1, #e9e9e0); padding: 0 1px;
+    .rewards-header { @include ff-gradient(#f9f9f1, #f6f6eb); min-height: 10px; }
+  }
+  .rewards-wrapper { background: #e9e9e0; padding: 0 1px 1px; @include box-shadow(1px 1px 0 #ffffff);
+    ul.rewards { @include reset-ul(); background: #f6f6eb; @include border-radius(0 0 2px 2px); padding: 10px 15px; margin: 0;
+      li { font-size: 12px; line-height: 1.3em; color: #8c8c7f; text-shadow: 1px 1px 0 #ffffff; padding-bottom: 10px; border-bottom: 1px solid #d8d8ca; @include box-shadow(0 1px 0 #ffffff); margin-bottom: 15px;
+        &:last-child { border-bottom: none; @include box-shadow(none); margin-bottom: 0; }
+        .header { margin:0; font-weight:bold; padding-bottom: 3px; }
+      }
+    }
+  }
+
+  ff-crowdfunder-donate-form, .ff-crowdfunder-donate-form { display:block; min-height: 500px;
+    form { font-size:13px; color:#676767; line-height:50px;
+      .row.amount { display: none; }
+      label { color: #989898; line-height: 2.3125rem; }
+      button { padding: .5rem 2rem .5rem; }
+    }
+  }
+
+}

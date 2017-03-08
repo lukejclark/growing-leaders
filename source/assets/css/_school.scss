@@ -1,0 +1,55 @@
+body.school {
+
+  .school-pages {
+    & > .row .horizontal-line { @extend .border-top; padding-top: 30px; margin-top:10px; }
+    .funding-numbers { text-align:center; padding-bottom:20px;
+      .font-large { padding:0px 0px 4px; font-size:45px; color:#516D76; font-weight:bold; }
+      .font-smaller { font-size:12px; color:#516D76; }
+    }
+    .learn-more { padding-top:20px; font-size:14px; color:#666666; line-height:28px; @extend .border-horizontal; height: 168px;
+      a { display:inline-block; }
+    }
+  }
+
+  .video-wrapper { height: 250px; }
+
+  .section-donating { position:relative; top:-5px; @media only screen and (max-width: 40em) { padding-top:20px; }
+    .controls {
+      .donate { display:inline-block;
+        input { width: 50px; display: inline-block; height: 29px; padding: 7px 5px 6px; margin:0; @include border-radius(3px); @include opacity(.5); @include box-shadow(none); vertical-align: middle; }
+        a.module-share-button { padding: 7px 15px 6px }
+      }
+      .or-text { display:inline-block; color: #cccccc; font-weight: bold; padding: 0 10px; text-shadow: 1px 1px 0 #ffffff; }
+      .sharing { display: inline-block; }
+    }
+
+    ul.rankings { @include reset-ul(); font-size:13px; margin-top: 30px; background: #F0F0EA; @include box-shadow(1px 1px 0 #ffffff); @include border-radius(2px); color: #979ea2; padding: 7px; padding-bottom: 3px; border: 1px solid #ddddd5;
+      &.recent-supporters { margin-top:40px; }
+      li { @extend .border-bottom; padding: 7px 0; overflow:hidden; //border-color: #e7e7e2;
+        &:last-child { border-bottom: none; @include box-shadow(none); }
+        &.title { font-weight: bold; color: #777d81; }
+        .name { float:left; }
+        .details { float:right; @include opacity(.5); font-style: italic; }
+      }
+    }
+  }
+
+  .section-school-data { font-size:13px; color:#444444; text-shadow: 1px 1px 0 #ffffff;
+    & > .title { line-height:21px; font-size:22px; font-weight:bold; color:#b6b5b1; padding-bottom:8px; }
+    .answer { line-height:21px; margin-bottom:30px; }
+
+    ul.stats { @include reset-ul(); font-size:13px;
+      li { @extend .border-bottom; padding: 5px 0; overflow:hidden;
+        &.title { font-weight: bold; }
+
+        .title { float:left; }
+        .num { float:right; }
+      }
+    }
+  }
+
+  .section-quotes { margin-top:30px;
+    ul.quotes.first-line { @extend .border-top; padding-top:40px; margin-top:0; }
+  }
+
+}

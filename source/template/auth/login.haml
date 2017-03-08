@@ -1,0 +1,13 @@
+.auth-slider.login
+  %ff-simple-auth-login(fanforce-widget)
+
+  .row
+    .large-12.columns
+      %a(ng-click='lostPassword()') Lost password?
+
+  .row
+    .large-12.columns
+      %p
+        If you don't have an account,&nbsp;
+        %a(ng-click='register()')> click here to register
+        \.

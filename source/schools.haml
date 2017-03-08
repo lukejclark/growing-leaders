@@ -1,0 +1,8 @@
+%div(ng-controller='SchoolsListCtrl')
+  = partial 'layouts/header', locals: {nav: 'schools', title: 'All Schools'}
+
+  .school-pages
+    .row
+      %school-card.small-12.medium-4.column(ng-repeat='school in schools' school='school' ng-class='{end: $index+1 == schools.length}')
+
+    = partial 'layouts/social_more'

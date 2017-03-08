@@ -1,0 +1,66 @@
+%headroom(offset='55')
+  .row(ng-controller="VisitorCtrl")
+    .share-buttons.small-12.medium-3.columns.hide-for-small-only
+      .row
+        .small-12.columns
+          %a.module-share-button.facebook-popup(href='javascript: fbShare()')
+            %i.fa.fa-facebook-square.fa-lg
+            %span.name Share
+          %a.module-share-button.twitter-popup(href=general_tweet_url)
+            %i.fa.fa-twitter.fa-lg
+            %span.name Tweet
+
+    .account-details.small-12.medium-9.columns.hide-for-small-only
+      .row
+        .identity.small-12.medium-3.columns
+          .is-logged-in(ng-show='visitor.is_logged_in')
+            %strong Not {{visitor.first_name || visitor.name}}?
+            %a.logout(ng-click='logout()') Logout
+          .is-logged-out(ng-hide='visitor.is_logged_in')
+            %a.login(ng-click='login()') Login
+            .divider or
+            %a.register(ng-click='register()') Register
+
+        .metrics.small-12.medium-7.columns
+          .impact-box
+            .num {{visitor.school_invested}}
+            .text(ng-show='visitor.school_invested!="--"')
+              %span(count='visitor.school_invested' when='{one: "school", other: "schools"}' ng-pluralize)
+              %span donated
+          .divider +
+          .impact-box
+            .num {{visitor.school_influenced}}
+            .text(ng-show='visitor.school_influenced!="--"')
+              %span(count='visitor.school_influenced' when='{one: "school", other: "schools"}' ng-pluralize)
+              %span influenced
+          .divider =
+          .impact-box
+            .num {{visitor.students_impacted}}
+            .text(ng-show='visitor.students_impacted!="--"')
+              %span(count='visitor.students_impacted' when='{one: "student", other: "students"}' ng-pluralize)
+              %span impacted
+        .donate.medium-2.columns
+          %button.module-share-button(ng-click='openDonate($event)' ng-disabled='disable_donate_link')
+            %i.fa.fa-credit-card
+            %span.name Donate
+
+    .mobile-login.small-4.columns.show-for-small-only
+      .is-logged-in(ng-show='visitor.is_logged_in')
+        %strong Not {{visitor.first_name || visitor.name}}?
+        %a.logout(ng-click='logout()') Logout
+      .is-logged-out(ng-hide='visitor.is_logged_in')
+        %a.login(ng-click='login()') Login
+    .mobile-impact.small-4.columns.show-for-small-only
+      .impact-box
+        .num {{visitor.students_impacted}}
+        .text(ng-show='visitor.students_impacted!="--"')
+          %span(count='visitor.students_impacted' when='{one: "student", other: "students"}' ng-pluralize)
+          %span impacted
+    .mobile-donate.small-4.columns.show-for-small-only
+      %button.module-share-button(ng-click='openDonate($event)' ng-disabled='disable_donate_link')
+        %i.fa.fa-credit-card
+        %span.name Donate
+
+
+:javascript
+  function fbShare() { return fbShareDetails() }

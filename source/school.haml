@@ -1,0 +1,183 @@
+%div(ng-controller='SchoolPageCtrl')
+  = partial 'layouts/header', locals: {nav: 'schools', title: '{{school.name}}', counter: 'school'}
+
+  .school-pages
+    .row
+      .small-12.medium-12.columns
+        .horizontal-line
+    .row
+      .small-12.medium-5.columns
+        .video-wrapper.hide-for-small-only(ng-class='{show: true, maximized: is_maximized}' enhanced-player)
+          .loading(ng-hide='is_ready') Loading...
+          .player-controls(ng-click='playVideo($event)' ng-show='is_ready')
+            .play-circle
+              .play-arrow
+          %ff-vimeo-player(ff-video-id='108280776')
+        %ff-vimeo-player.show-for-small-only(ff-video-id='108280776')
+
+        .video-player(ng-class='{show: true}')
+          .play-circle
+            .play-arrow
+      .small-12.medium-7.columns
+        .row.funding-numbers
+          .small-4.columns
+            .font-large {{school.habitude_students|number}}
+            .font-smaller students
+          .small-4.columns
+            .font-large {{school.habitude_teachers|number}}
+            .font-smaller habitude teachers
+          .small-4.columns
+            .font-large {{stats.funding_percentage|number}}%
+            .font-smaller funded
+        .row
+          .small-12.columns
+            .learn-more
+              %em Growing Leaders for Georgia
+              is a movement to bring
+              %strong Habitudes
+              (a visual, character-based, student-leadership development curriculum) to Georgia high schools that cannot afford to purchase the program for their students.
+              %a(href='')
+                %strong Learn more about Habitudes.
+
+    .row
+      .section-donating.small-12.medium-5.columns
+        .controls
+          .donate
+            %input(type='text' ng-model='donation_amount')
+            %button.module-share-button(ng-click='openDonate($event, school_id, donation_amount)')
+              %i.fa.fa-credit-card
+              %span.name Donate
+          .or-text or
+          .sharing
+            %a.module-share-button(href='javascript: fbShare()')
+              %i.fa.fa-facebook-square.fa-lg
+              %span.name Share
+            %a.module-share-button.twitter-popup(href=school_tweet_url)
+              %i.fa.fa-twitter.fa-lg
+              %span.name Tweet
+
+        %ul.rankings.recent-supporters
+          %li.title Recent Supporters
+          %li(ng-repeat='person in recent_supporters')
+            .name {{person.name}}
+          %li(ng-if='recent_supporters.length==0')
+            There are no supporters for this school
+
+        %ul.rankings.top-influencers
+          %li.title Top Influencers
+          %li(ng-repeat='person in top_influencers')
+            .name {{person.name}}
+            .details influenced {{person.influenced_action_count}} people
+          %li(ng-if='top_influencers.length==0')
+            There are no influencers for this school
+
+        %ul.rankings.founding-donors
+          %li.title Founding Donors
+          %li(ng-repeat='person in founding_donors')
+            .name {{$index+1}}) &nbsp;{{person.name}}
+          %li(ng-if='founding_donors.length==0')
+            %a(ng-click='openDonate($event, school_id)') Click here to become a founding donor
+
+      .section-school-data.small-12.medium-7.columns
+
+        .title Why Fund Habitudes at {{school.name_short}}?
+        .answer {{school.why}}
+
+        .title Quick Stats
+
+        .row
+          .small-12.medium-6.columns
+            %ul.stats
+              %li.title Principal
+              %li {{school.principal_name}}
+            %ul.stats
+              %li.title Ethnicities
+              %li
+                .title Caucasian
+                .num {{school.ethnic_caucasian}}%
+              %li
+                .title  African American
+                .num {{school.ethnic_african}}%
+              %li
+                .title  Hispanic
+                .num  {{school.ethnic_hispanic}}%
+              %li
+                .title Asian  American
+                .num {{school.ethnic_asian}}%
+              %li
+                .title Indian
+                .num {{school.ethnic_indian}}%
+              %li
+                .title Other 
+                .num {{school.ethnic_other}}%
+
+          .small-12.medium-6.columns
+            %ul.stats
+              %li.title Lunch
+              %li
+                .title Free Lunch
+                .num {{school.lunch_free}}%
+              %li
+                .title Reduced Lunch
+                .num {{school.lunch_reduced}}%
+
+            %ul.stats
+              %li.title Grades
+              %li
+                .title 9th Grade
+                .num {{school.grade_9th|number}} students
+              %li
+                .title 10th Grade
+                .num {{school.grade_10th|number}} students
+              %li
+                .title 11th Grade
+                .num {{school.grade_11th|number}} students
+              %li
+                .title 12th Grade
+                .num {{school.grade_12th|number}} students
+
+    .row.section-quotes
+      .small-12.columns
+        %ul.quotes.first-line
+          %li
+            .left-quote &ldquo;
+            .photo
+              %img(src='/assets/img/quotes/growingleaders_0012_Clay.jpg')
+            .quote
+              "Habitudes has been a catalyst<br/>
+              for me in my journey as a leader and a student officer."
+            .author - Clay, University of South Carolina
+          %li
+            .right-quote &rdquo;
+            .photo
+              %img(src='/assets/img/quotes/growingleaders_0006_BethOlney.jpg')
+            .quote
+              "Habitudes understands what students need and<br/>
+              how to deliver it in a relevant fashion."
+            .author - Mary Gerardy, Dean, Wake Forest University
+
+        %ul.quotes.second-line
+          %li
+            .photo
+              %img(src='/assets/img/quotes/growingleaders_0011_Becky.jpg')
+            .quote
+              "Habitudes was the best leadership book I ever read.<br/>
+              It's simple, memorable, and it prepared me for life."
+            .author - Becky, Kansas State University
+          %li
+            .photo
+              %img(src='/assets/img/quotes/growingleaders_0009_JoKirchner.jpg')
+            .quote
+              "I highly recommend Habitudes to parents, teachers,<br>
+              coaches and youth workers everywhere."
+            .author - Jo Kirchner, CEO of Primrose Schools
+          %li
+            .photo
+              %img(src='/assets/img/quotes/growingleaders_0010_Brent.jpg')
+            .quote
+              "The best thing about Habitudes is each image<br/>
+              is practical to my life. I use them every day."
+            .author - Brent, Virginia Tech
+
+
+    = partial 'layouts/social_more'

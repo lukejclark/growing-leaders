@@ -1,0 +1,24 @@
+%a.wrapper(href='/schools/{{school._id}}\#{{sharable_token}}')
+  .title {{school.name}}
+  .row.stats-main
+    .small-6.columns
+      .text-large ${{school.stats.funding_raised}}
+      .text-small raised of ${{school.stats.funding_goal}}
+    .small-6.columns.border-left
+      .text-large {{school.stats.total_backers}}
+      .text-small total backers
+  .row.stats-lower
+    .small-12.columns
+      .progress.secondary
+        %span.meter(style='width:{{school.stats.funding_percentage=="--" ? 1 : school.stats.funding_percentage}}%')
+    .small-12.columns.percent-stat
+      {{school.stats.funding_percentage}}% funded
+.buttons-lower
+  %button.module-share-button(ng-click='openDonate($event, school_id)')
+    %i.fa.fa-credit-card
+    %span.name Donate
+  %span.or or
+  %a.module-share-button(href='javascript: fbShare()')
+    %i.fa.fa-facebook-square.special
+  %a.module-share-button.twitter-popup(href=school_tweet_url)
+    %i.fa.fa-twitter.special

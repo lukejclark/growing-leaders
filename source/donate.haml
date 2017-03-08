@@ -1,0 +1,43 @@
+= partial 'layouts/header', locals: {nav: 'schools', counter: 'none'}
+
+.page-donate(ng-controller='DonatePageCtrl')
+  .row
+    .column.medium-8
+      .row(ng-hide='has_donated')
+        .medium-9.medium-offset-3.columns
+          .text-header
+            You are donating
+            %input.donation-amount(type='text' ng-model='donation_amount')
+            %span on behalf of
+            .donate-to(ng-hide='is_random_school')
+              %a(ng-href='/schools/{{school_id}}') {{school_name}}
+            .donate-to(ng-show='is_random_school')
+              [
+              %a(ng-href='/schools') randomly selected school that needs help
+              ]
+      .widget(ng-if='school_id')
+        %ff-crowdfunder-donate-form(_external_id='{{school_id}}' donation-amount='{{donation_amount}}')
+    .column.medium-1
+    .column.medium-3
+      .rewards-header-wrapper
+        .rewards-header
+      .rewards-wrapper
+        %ul.rewards
+          %li
+            .header $25 Pledge
+            .text "The Special Thank You" —  You’ll receive a hand scribed thank you note on behalf of the school you’ve sponsored.
+          %li
+            .header $50 Pledge
+            .text "The Favorite Image" — You will receive a framed copy of your favorite Habitudes image + The Bookmark + The Special Thank You
+          %li
+            .header $200 Pledge
+            .text "The Tumbler" — You’ll be refreshed knowing you’ve helped students every time you drink from a Growing Leaders for Georgia tumbler + The Framed Image + The Bookmark + The Special Thank You
+          %li
+            .header $500 Pledge
+            .text "The Spirit Wear" — You will receive a piece of spirit wear from the school you’ve supported + The Tumbler + The Favorite Image + The Bookmark + The Special Thank You
+          %li
+            .header $1,000 Pledge
+            .text "The School Visit" — You will have the chance to visit the school you’ve generously sponsored to observe a live Habitudes lesson in a classroom + The Spirit Wear + The Tumbler + The Favorite Image + The Bookmark + The Special Thank You
+          %li
+            .header $3,000 Pledge
+            .text "The VIP Seat" — You will receive a VIP seat at Growing Leaders National Leadership Forum in June 2015 + The School Visit

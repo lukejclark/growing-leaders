@@ -1,0 +1,26 @@
+school-card { display:block; position:relative; min-height: 239px;
+  &.fully-funded { @include opacity(0.5); pointer-events:none;
+    .module-share-button { @include opacity(0.3); }
+  }
+
+  .wrapper { cursor: pointer; cursor: hand; display:block; background:#fff; border:1px solid #D9D9D9; padding:12px; margin-top:22px; @include border-radius(2px); @include box-shadow(rgba(#2A87B1, 0.2) 1px 1px 1px);
+    &:hover { @include box-shadow(rgba(#2A87B1, 0.2) 0 0 4px, rgba(#E2E9EC, 0.2) 0 0 2px 1px inset); border-color: #9baec1; }
+  }
+  .title { font-size:16px; font-weight:bold; color:#516D76; line-height:22px; @extend .border-bottom; margin-bottom:16px; padding-bottom:10px; }
+  .stats-main {
+    .text-large { font-size:35px; font-weight:bold; color:#516D76; line-height:60px; text-align:center; }
+    .text-small { font-size:12px; color:#516D76; line-height:14px; text-align:center; margin-bottom:12px; }
+    .border-left { border-left:1px solid rgba(150,150,150,0.33); }
+  }
+  .stats-lower { margin-bottom:7px; text-align:right;
+    .progress { margin:12px 0px 12px 0px; border-color: #E5E5DC; padding: 1px 0 0 1px;  @include border-radius(2px); background: #f6f6ed;
+      .meter { min-width:2px; background: #9DDD46; @include border-radius(1px); }
+    }
+    .percent-stat { font-size:12px; color:#aaaaaa; line-height:26px; text-align:left; }
+  }
+  .buttons-lower { position:absolute; right: 0.9375rem; bottom:12px; padding-right: 14px;
+    .or { color:lightgrey; font-size:14px; }
+    .special { position:relative; top:1px; margin-right:0px; }
+    .module-share-button { padding:6px 8px 6px; }
+  }
+}

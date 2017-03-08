@@ -1,0 +1,14 @@
+body.index {
+
+  .row.below-video-content { margin-top: -50px; padding-bottom:30px;
+    .whois-growing-leader { font-size:14px; line-height:28px; color:#555555; padding-right:50px; }
+    .social-share { margin-top:10px; @media only screen and (min-width: 40em) { margin-top:0px; text-align:right; }
+      .twitter-popup { margin-right:0px; }
+    }
+  }
+
+  .school-header { @extend .border-top; padding-top:28px; overflow: hidden;
+    .title { font-size:22px; font-weight:bold; color:#b6b5b1; text-shadow: 1px 1px 0 #ffffff; line-height: 22px; margin-bottom:8px; @media only screen and (min-width: 40em) { float:left; margin-bottom:0px; } }
+    .view-all-schools { font-size: 12px; font-weight:bold; text-shadow: 1px 1px 0 #ffffff; line-height:22px; @media only screen and (min-width: 40em) { float:right; } }
+  }
+}
